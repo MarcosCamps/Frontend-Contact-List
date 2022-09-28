@@ -50,9 +50,13 @@ body {
   display: flex;
   align-items: center;
 }
-.header .menu-header .logo-space .logo-text {
+.header .menu-header .logo-space a {
+  text-decoration: none;
+  color: var(--white);
   font-size: 1.5rem;
-  font-weight: 400;
+  font-weight: 600;
+}
+.header .menu-header .logo-space .logo-text {
   margin-left: 0.5rem;
 }
 

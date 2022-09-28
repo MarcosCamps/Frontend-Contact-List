@@ -9,6 +9,28 @@
   text-align: center;
 }
 
+.style-form {
+  display: flex;
+  width: 20%;
+  margin-left: 270px;
+  justify-content: center;
+}
+.style-form button {
+  width: 50%;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--white);
+  background-color: var(--button);
+  margin-top: 1rem;
+  cursor: pointer;
+}
+.style-form button:hover {
+  background-color: var(--button-hover);
+}
+
 .list-container {
   padding: 6.7rem;
   background: var(--white);

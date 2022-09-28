@@ -8,7 +8,7 @@ export function Contacts() {
       <div>
         <section className="contact-form">
           <h1>Register your contact</h1>
-          <div>
+          <div className="style-form">
             <form>
               <label htmlFor="email">
                 Email
