@@ -1,0 +1,10 @@
+.contact-form {
+  padding: 1.7rem;
+  box-sizing: border-box;
+  border-radius: 10px;
+  background: var(--white);
+}
+.contact-form h1 {
+  font-size: 1.7rem;
+  text-align: center;
+}/*# sourceMappingURL=Contacts.styles.css.map */
