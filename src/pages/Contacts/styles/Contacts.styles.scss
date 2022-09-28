@@ -1,27 +1,11 @@
 .contact-form {
-  padding: 1.7rem;
+  padding: 4.7rem;
   box-sizing: border-box;
   border-radius: 10px;
   background: var(--white);
   h1 {
     font-size: 1.7rem;
-  }
-
-  form {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 1rem;
-    label {
-      display: block;
-      margin-bottom: 0.5rem;
-    }
-    input {
-      width: 100%;
-      padding: 0.8rem;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      outline: none;
-    }
+    text-align: center;
   }
 }
 

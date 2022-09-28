@@ -7,15 +7,15 @@ export function Contacts() {
       <Header />
       <div>
         <section className="contact-form">
-          <h1>My Contacts</h1>
+          <h1>Register your contact</h1>
           <div>
             <form>
               <label htmlFor="email">
-                Register Email
+                Email
                 <input type="email" name="email" id="email" />
               </label>
               <label htmlFor="telephone">
-                Register Telephone
+                Telephone
                 <input type="text" name="telephone" id="telephone" />
               </label>
               <label htmlFor="whatsapp">
@@ -26,7 +26,7 @@ export function Contacts() {
             </form>
           </div>
           <div className="list-container">
-            <h2>Contacts List</h2>
+            <h2>My Contacts</h2>
 
             <table>
               <tr>
