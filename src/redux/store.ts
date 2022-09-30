@@ -1,9 +1,10 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import { currentThemeSlice } from './slicers';
+import { currentThemeSlice, currentUserSlice } from './slicers';
 
 export const store = configureStore({
   reducer: {
     currentTheme: currentThemeSlice.reducer,
+    currentUser: currentUserSlice.reducer,
   },
 });
 

@@ -1,18 +1,36 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { loginUser } from 'services';
+import { ErrorHandler } from 'components/Messages';
+import { useAppDispatch } from 'hooks';
+import { setCurrentUser } from 'redux/slicers';
 
 export function LoginForm() {
-  const [email, setEmail] = useState('');
+  const [userEmail, setUserEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState({ status: false, message: '' });
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const handleSubmit = async (e: React.SyntheticEvent): Promise<void> => {
     e.preventDefault();
-    console.log({ email, password });
+    try {
+      if (!userEmail || !password) {
+        throw new Error('Please fill in all fields');
+      }
+      const result = await loginUser({ userEmail, password });
+      if (!result) throw new Error('Invalid credentials');
+      dispatch(setCurrentUser({ email: userEmail, token: result.token }));
+      navigate('/contacts');
+    } catch (err) {
+      setError({ status: true, message: `${err}` });
+    }
   };
   return (
     <div className="login-form-container">
       <section className="login-form">
         <h1>Login</h1>
+        <ErrorHandler error={error.status} message={error.message} />
         <section className="form-container">
           <form className="form" onSubmit={handleSubmit}>
             <label htmlFor="email">
@@ -20,8 +38,8 @@ export function LoginForm() {
               <input
                 type="email"
                 name="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                value={userEmail}
+                onChange={(e) => setUserEmail(e.target.value)}
                 id="email"
               />
             </label>
@@ -40,7 +58,7 @@ export function LoginForm() {
           <p>
             Don&#39;t have an account?
             {' '}
-            <Link to="/register">Register</Link>
+            <Link to="/">Register</Link>
           </p>
         </section>
       </section>

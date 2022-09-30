@@ -1,22 +1,36 @@
 import { useState } from 'react';
 import { createUser } from 'services';
+import { useNavigate } from 'react-router-dom';
+import { ErrorHandler } from 'components/Messages';
 
 export function SignUpForm() {
-  const [email, setEmail] = useState('');
+  const [userEmail, setUserEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
+  const [error, setError] = useState({ status: false, message: '' });
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.SyntheticEvent): Promise<void> => {
     e.preventDefault();
-    console.log('submitting');
-    const result = await createUser({ email, password });
-    console.log(result);
+    try {
+      if (password !== passwordConfirmation) {
+        throw new Error('Passwords do not match');
+      }
+      if (!userEmail || !password) {
+        throw new Error('Email and password are required');
+      }
+      await createUser({ userEmail, password });
+      navigate('/contacts');
+    } catch (err) {
+      setError({ status: true, message: `${err}` });
+    }
   };
   return (
     <div className="signup-form-container">
       <section className="signup-form">
         <h1>Welcome To iContacts</h1>
         <h4>Setup your account now for FREE</h4>
+        <ErrorHandler error={error.status} message={error.message} />
         <section className="form-container">
           <form className="form" onSubmit={handleSubmit}>
             <label htmlFor="email">
@@ -25,8 +39,8 @@ export function SignUpForm() {
                 type="email"
                 name="email"
                 id="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                value={userEmail}
+                onChange={(e) => setUserEmail(e.target.value)}
               />
             </label>
             <label htmlFor="password">

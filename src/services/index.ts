@@ -1,1 +1,1 @@
-export { createUser } from './userApi';
+export { createUser, loginUser } from './userApi';
