@@ -2,6 +2,8 @@
 
 @import "global.vars";
 
+/** COMMON STYLES **/
+
 * {
   margin: 0;
   padding: 0;
@@ -10,7 +12,7 @@
 
 body {
   font-family: 'Inter', sans-serif;
-  color: $text;
+  color: $primary;
   background-color: $background-color;
 }
 
@@ -20,13 +22,13 @@ button {
 
 a {
   text-decoration: none;
-  color: $text;
+  color: $primary;
   cursor: pointer;
 }
 
 .header {
   background-color: $header-bg-color;
-  color: $text;
+  color: $secondary;
   text-align: center;
   position: fixed;
   width: 100%;
@@ -44,7 +46,7 @@ a {
       border-radius: 4px;
       font-size: 1rem;
       font-weight: 600;
-      color: $text;
+      color: $secondary;
       background-color: $button;
       &:hover {
         background-color: $button-hover;
@@ -56,13 +58,15 @@ a {
       a {
         font-size: 1.5rem;
         font-weight: 600;
+        color: $secondary;
       }
       .logo-text {
         margin-left: 0.5rem;
+        color: $secondary;
       }
     }
     .add-contact a {
-      color: $text;
+      color: $secondary;
       font-size: 2rem;
       text-decoration: none;
       margin-right: 0.5rem;
@@ -73,9 +77,9 @@ a {
     bottom: 1rem;
     right: 1rem;
     z-index: 1;
-    color: $text;
+    color: $primary;
     &:hover {
-      color: $text-darker;
+      color: $primary-darker;
     }
   }
 }
@@ -89,10 +93,14 @@ a {
   margin-bottom: 0.5rem;
 }
 
+/** CONTACTS LIST **/
+
 .contacts-container {
-  padding-top: 5rem;
+  padding: 5rem 1rem;
   margin: 0 1rem;
   background-color: $background-color;
+  max-width: 500px;
+  margin: 0 auto;
   h1 {
     font-size: 2rem;
     font-weight: 600;
@@ -101,9 +109,34 @@ a {
   .welcome-user {
     font-weight: 600;
   }
+  .contacts {
+    background-color: $contact-list-bg;
+    border-radius: 5px;
+    color: $primary;
+    margin-top: 1rem;
+    padding: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    .single-contact {
+      padding: 17px 0 10px;
+      display: flex;
+      justify-content: space-between;
+      .contact-contacts {
+        display: flex;
+        justify-content: space-between;
+        width: 140px;
+      }
+    }
+    .divider {
+      color: $divider;
+      border-color: $divider;
+      background-color: $divider;
+    }
+  }
 }
 
-.signup-form-container {
+/** ADD FORM **/ // future default CSS for all forms!
+
+.form-container {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -113,11 +146,13 @@ a {
   padding: 0.3rem;
 }
 
-.signup-form {
+.section-form {
   padding: 1.7rem;
   box-sizing: border-box;
   border-radius: 10px;
-  background: $text;
+  background: $secondary;
+  color: $primary;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   h1 {
     font-size: 1.7rem;
     text-align: center;
@@ -127,7 +162,7 @@ a {
     text-align: center;
     margin-bottom: 1rem;
   }
-  .form-container {
+  .section-container {
     max-width: 500px;
     width: 100%;
     margin: 0 auto;
@@ -136,6 +171,17 @@ a {
       display: flex;
       flex-direction: column;
       margin-bottom: 1rem;
+      .checkbox-container {
+        label {
+          display: flex;
+          align-items: center;
+          input {
+            width: 20px;
+            height: 15px;
+            margin-right: 0.2rem;
+          }
+        }
+      }
       label {
         display: block;
         margin-bottom: 0.5rem;
@@ -154,7 +200,7 @@ a {
         border-radius: 4px;
         font-size: 1rem;
         font-weight: 600;
-        color: $text;
+        color: $secondary;
         background-color: $button;
         margin-top: 1rem;
         cursor: pointer;

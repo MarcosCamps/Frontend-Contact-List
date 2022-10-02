@@ -1,9 +1,22 @@
 import { Header } from 'components/Header';
-import { useAppSelector } from 'hooks';
+import { useAppSelector, useAppDispatch } from 'hooks';
 import { ContactCard } from 'components/Cards';
+import { getContacts } from 'services/contactsApi';
+import { useEffect } from 'react';
+import { setContactList } from 'redux/slicers';
 
 export function Contacts() {
-  const { currentUser } = useAppSelector((state) => state);
+  const { currentUser, contactsList } = useAppSelector((state) => state);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    getContacts(currentUser.id).then((res) => dispatch(setContactList(res)));
+  }, []);
+
+  useEffect(() => {
+    console.log(contactsList);
+  }, [contactsList]);
+
   return (
     <>
       <Header />
@@ -13,11 +26,29 @@ export function Contacts() {
             Welcome
             {' '}
             {currentUser.email}
+            !
           </p>
-          <p>Here you can see all your contacts</p>
+          <p>
+            You have
+            {' '}
+            {contactsList.length}
+            {' '}
+            contacts.
+          </p>
         </div>
         <div className="contacts">
-          <ContactCard />
+          {contactsList.map(({
+            id, name, email, telephone, whatsapp,
+          }) => (
+            <ContactCard
+              key={id}
+              id={id}
+              name={name}
+              email={email}
+              phone={telephone}
+              whatsapp={whatsapp}
+            />
+          ))}
         </div>
       </div>
     </>

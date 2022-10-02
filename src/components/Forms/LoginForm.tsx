@@ -20,18 +20,18 @@ export function LoginForm() {
       }
       const result = await loginUser({ userEmail, password });
       if (!result) throw new Error('Invalid credentials');
-      dispatch(setCurrentUser({ email: userEmail, token: result.token }));
+      dispatch(setCurrentUser({ email: userEmail, id: result.id, token: result.token }));
       navigate('/contacts');
     } catch (err) {
       setError({ status: true, message: `${err}` });
     }
   };
   return (
-    <div className="login-form-container">
-      <section className="login-form">
+    <div className="form-container">
+      <section className="section-form">
         <h1>Login</h1>
         <ErrorHandler error={error.status} message={error.message} />
-        <section className="form-container">
+        <section className="section-container">
           <form className="form" onSubmit={handleSubmit}>
             <label htmlFor="email">
               Email

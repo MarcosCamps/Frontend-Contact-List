@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;900&display=swap");
+/** COMMON STYLES **/
 * {
   margin: 0;
   padding: 0;
@@ -7,8 +8,8 @@
 
 body {
   font-family: "Inter", sans-serif;
-  color: #ecf0f1;
-  background-color: #2f3640;
+  color: #2c3e50;
+  background-color: #cdcdcd;
 }
 
 button {
@@ -17,7 +18,7 @@ button {
 
 a {
   text-decoration: none;
-  color: #ecf0f1;
+  color: #2c3e50;
   cursor: pointer;
 }
 
@@ -56,9 +57,11 @@ a {
 .header .menu-header .logo-space a {
   font-size: 1.5rem;
   font-weight: 600;
+  color: #ecf0f1;
 }
 .header .menu-header .logo-space .logo-text {
   margin-left: 0.5rem;
+  color: #ecf0f1;
 }
 .header .menu-header .add-contact a {
   color: #ecf0f1;
@@ -71,10 +74,10 @@ a {
   bottom: 1rem;
   right: 1rem;
   z-index: 1;
-  color: #ecf0f1;
+  color: #2c3e50;
 }
 .header .floating-add a:hover {
-  color: #bdc3c7;
+  color: #1c2732;
 }
 
 .container {
@@ -86,10 +89,13 @@ a {
   margin-bottom: 0.5rem;
 }
 
+/** CONTACTS LIST **/
 .contacts-container {
-  padding-top: 5rem;
+  padding: 5rem 1rem;
   margin: 0 1rem;
-  background-color: #2f3640;
+  background-color: #cdcdcd;
+  max-width: 500px;
+  margin: 0 auto;
 }
 .contacts-container h1 {
   font-size: 2rem;
@@ -99,8 +105,32 @@ a {
 .contacts-container .welcome-user {
   font-weight: 600;
 }
+.contacts-container .contacts {
+  background-color: #ecf0f1;
+  border-radius: 5px;
+  color: #2c3e50;
+  margin-top: 1rem;
+  padding: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+.contacts-container .contacts .single-contact {
+  padding: 17px 0 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.contacts-container .contacts .single-contact .contact-contacts {
+  display: flex;
+  justify-content: space-between;
+  width: 140px;
+}
+.contacts-container .contacts .divider {
+  color: #f6f6f6;
+  border-color: #f6f6f6;
+  background-color: #f6f6f6;
+}
 
-.signup-form-container {
+/** ADD FORM **/
+.form-container {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -110,44 +140,55 @@ a {
   padding: 0.3rem;
 }
 
-.signup-form {
+.section-form {
   padding: 1.7rem;
   box-sizing: border-box;
   border-radius: 10px;
   background: #ecf0f1;
+  color: #2c3e50;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
-.signup-form h1 {
+.section-form h1 {
   font-size: 1.7rem;
   text-align: center;
 }
-.signup-form h4 {
+.section-form h4 {
   font-size: 1rem;
   text-align: center;
   margin-bottom: 1rem;
 }
-.signup-form .form-container {
+.section-form .section-container {
   max-width: 500px;
   width: 100%;
   margin: 0 auto;
   padding: 0 1rem;
 }
-.signup-form .form-container .form {
+.section-form .section-container .form {
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
 }
-.signup-form .form-container .form label {
+.section-form .section-container .form .checkbox-container label {
+  display: flex;
+  align-items: center;
+}
+.section-form .section-container .form .checkbox-container label input {
+  width: 20px;
+  height: 15px;
+  margin-right: 0.2rem;
+}
+.section-form .section-container .form label {
   display: block;
   margin-bottom: 0.5rem;
 }
-.signup-form .form-container .form input {
+.section-form .section-container .form input {
   width: 100%;
   padding: 0.8rem;
   border: 1px solid #ccc;
   border-radius: 4px;
   outline: none;
 }
-.signup-form .form-container .form button {
+.section-form .section-container .form button {
   width: 100%;
   padding: 20px;
   border: 1px solid #ccc;
@@ -159,6 +200,6 @@ a {
   margin-top: 1rem;
   cursor: pointer;
 }
-.signup-form .form-container .form button:hover {
+.section-form .section-container .form button:hover {
   background-color: #2980b9;
 }/*# sourceMappingURL=global.css.map */

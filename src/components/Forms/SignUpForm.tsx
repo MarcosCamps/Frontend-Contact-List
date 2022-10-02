@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { createUser } from 'services';
 import { useNavigate } from 'react-router-dom';
+import { useAppDispatch } from 'hooks';
+import { setCurrentUser } from 'redux/slicers';
 import { ErrorHandler } from 'components/Messages';
 
 export function SignUpForm() {
@@ -9,6 +11,7 @@ export function SignUpForm() {
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
   const [error, setError] = useState({ status: false, message: '' });
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const handleSubmit = async (e: React.SyntheticEvent): Promise<void> => {
     e.preventDefault();
@@ -19,19 +22,20 @@ export function SignUpForm() {
       if (!userEmail || !password) {
         throw new Error('Email and password are required');
       }
-      await createUser({ userEmail, password });
+      const result = await createUser({ userEmail, password });
+      dispatch(setCurrentUser({ email: userEmail, id: result.id, token: result.token }));
       navigate('/contacts');
     } catch (err) {
       setError({ status: true, message: `${err}` });
     }
   };
   return (
-    <div className="signup-form-container">
-      <section className="signup-form">
+    <div className="form-container">
+      <section className="section-form">
         <h1>Welcome To iContacts</h1>
         <h4>Setup your account now for FREE</h4>
         <ErrorHandler error={error.status} message={error.message} />
-        <section className="form-container">
+        <section className="section-container">
           <form className="form" onSubmit={handleSubmit}>
             <label htmlFor="email">
               Email
