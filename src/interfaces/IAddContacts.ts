@@ -3,5 +3,5 @@ export interface IAddContacts {
   name: string;
   email?: string;
   telephone?: string;
-  whatsapp?: string;
+  whatsapp?: boolean;
 }

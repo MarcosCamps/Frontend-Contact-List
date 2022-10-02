@@ -8,11 +8,7 @@ export const contactsListSlice = createSlice({
       state = payload;
       return state;
     },
-    addContactList: (state: any, { payload }) => {
-      state.push(payload);
-      return state;
-    },
   },
 });
 
-export const { setContactList, addContactList } = contactsListSlice.actions;
+export const { setContactList } = contactsListSlice.actions;

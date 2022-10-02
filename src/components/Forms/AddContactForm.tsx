@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { createContact } from 'services';
 import { useNavigate } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from 'hooks';
-import { addContactList } from 'redux/slicers';
+import { useAppSelector } from 'hooks';
 import { ErrorHandler } from 'components/Messages';
 
 export function AddContactForm() {
@@ -13,28 +12,16 @@ export function AddContactForm() {
   const [whatsapp, setWhatsapp] = useState(false);
   const [error, setError] = useState({ message: '', status: false });
   const navigate = useNavigate();
-  const dispatch = useAppDispatch();
 
   const handleSubmit = async (e: React.SyntheticEvent): Promise<void> => {
     e.preventDefault();
-    const isWhatsAppTrue = whatsapp ? telephone : '';
     const result = await createContact({
-      userId: currentUser.id, name, email, telephone, whatsapp: isWhatsAppTrue,
+      userId: currentUser.id, name, email, telephone, whatsapp,
     });
-    console.log(result);
     if (!result) {
       setError({ status: true, message: 'Error creating contact' });
       return;
     }
-    dispatch(
-      addContactList({
-        id: result.id,
-        email,
-        name,
-        telephone,
-        whatsapp,
-      }),
-    );
     navigate('/contacts');
   };
   return (
