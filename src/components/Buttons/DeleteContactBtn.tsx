@@ -1,14 +1,18 @@
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
+import { deleteContact } from 'services';
 
 export function DeleteContactBtn() {
   const { id } = useParams<{ id: string }>();
-  const handleDelete = () => {
-    console.log('deletou toda');
+  const navigate = useNavigate();
+
+  const handleDelete = async () => {
+    await deleteContact(Number(id));
+    navigate('/contacts');
   };
 
   return (
     <div className="delete-contact">
-      <button onClick={} type="button" className="delete-btn">DELETE</button>
+      <button onClick={handleDelete} type="button" className="delete-btn">DELETE</button>
     </div>
   );
 }

@@ -17,3 +17,8 @@ export const updateContact = async (contact: IContacts) => {
   const { data } = await axios.put(`${API_URL}/contact/${contact.id}`, contact);
   return data;
 };
+
+export const deleteContact = async (id: number) => {
+  const { data } = await axios.delete(`${API_URL}/contact/${id}`);
+  return data;
+};
