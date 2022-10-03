@@ -1,0 +1,1 @@
+export { DeleteContactBtn } from './DeleteContactBtn';

@@ -45,8 +45,8 @@ export function Contacts() {
               id={id}
               name={name}
               email={email}
-              phone={telephone}
-              whatsapp={whatsapp ? telephone : ''}
+              telephone={telephone}
+              whatsapp={!!whatsapp}
             />
           ))}
         </div>

@@ -5,7 +5,7 @@ import { AiFillMail, AiFillPhone } from 'react-icons/ai';
 import { IoLogoWhatsapp, IoIosArrowForward } from 'react-icons/io';
 
 export function ContactCard({
-  id, name, email, phone, whatsapp,
+  id, name, email, telephone, whatsapp,
 }: IContacts) {
   return (
     <>
@@ -26,9 +26,9 @@ export function ContactCard({
               : (<AiFillMail size="1.7rem" color="gray" />)}
           </div>
           <div className="contact-phone">
-            {phone
+            {telephone
               ? (
-                <a href={`tel:${phone}`}>
+                <a href={`tel:${telephone}`}>
                   <AiFillPhone size="1.7rem" color="#2980b9" />
                 </a>
               )
@@ -59,12 +59,12 @@ ContactCard.propTypes = {
   id: propTypes.number.isRequired,
   name: propTypes.string.isRequired,
   email: propTypes.string,
-  phone: propTypes.string,
+  telephone: propTypes.string,
   whatsapp: propTypes.oneOfType([propTypes.string, propTypes.number]),
 };
 
 ContactCard.defaultProps = {
   email: '',
-  phone: '',
+  telephone: '',
   whatsapp: '',
 };

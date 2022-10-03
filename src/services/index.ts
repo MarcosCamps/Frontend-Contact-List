@@ -1,2 +1,2 @@
 export { createUser, loginUser } from './userApi';
-export { createContact, getContacts } from './contactsApi';
+export { createContact, getContacts, updateContact } from './contactsApi';
