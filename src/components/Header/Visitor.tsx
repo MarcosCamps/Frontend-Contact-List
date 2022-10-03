@@ -1,8 +1,17 @@
 import { MdContactPhone } from 'react-icons/md';
-import { useNavigate, Link } from 'react-router-dom';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
+import { useEffect } from 'react';
 
 export function Visitor() {
+  const { pathname } = useLocation();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (pathname !== '/' && pathname !== '/login') {
+      navigate('/login');
+    }
+  }, [pathname]);
+
   return (
     <div className="menu-header">
       <div className="logo-space">

@@ -207,4 +207,23 @@ a {
 }
 .section-form .section-container .form button:hover {
   background-color: #2980b9;
+}
+
+/** FOOTER **/
+.footer {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.footer button {
+  width: 140px;
+  padding: 10px;
+  border: 0;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ecf0f1;
+  background-color: #3498db;
+}
+.footer button:hover {
+  background-color: #2980b9;
 }/*# sourceMappingURL=global.css.map */

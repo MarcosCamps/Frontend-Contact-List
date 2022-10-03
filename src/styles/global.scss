@@ -218,3 +218,23 @@ a {
     }
   }
 }
+
+/** FOOTER **/
+
+.footer {
+  text-align: center;
+  margin-bottom: 2rem;
+  button {
+    width: 140px;
+    padding: 10px;
+    border: 0;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: $secondary;
+    background-color: $button;
+    &:hover {
+      background-color: $button-hover;
+    }
+  }
+}

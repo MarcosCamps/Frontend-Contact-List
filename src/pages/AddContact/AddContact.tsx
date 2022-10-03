@@ -1,4 +1,5 @@
 import { Header } from 'components/Header';
+import { Footer } from 'components/Footer';
 import { AddContactForm } from 'components/Forms';
 
 export function AddContact() {
@@ -6,6 +7,7 @@ export function AddContact() {
     <>
       <Header />
       <AddContactForm />
+      <Footer />
     </>
   );
 }
