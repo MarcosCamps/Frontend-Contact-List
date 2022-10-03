@@ -18,7 +18,7 @@ Para iniciar a aplicação
       npm start
 
 
-# Tecnologias Utilizadas do Frontend
+# Tecnologias Utilizadas no Frontend
 
 1. Redux Toolkit, para manipular o estado global da aplicação.
 2. Axios, para fazer requisições http para a API do backend.
