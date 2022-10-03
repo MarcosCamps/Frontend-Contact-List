@@ -37,7 +37,7 @@ export function ContactCard({
           <div className="contact-whatsapp">
             {whatsapp
               ? (
-                <a href={`http://api.whatsapp.com/send?phone=${whatsapp}`}>
+                <a href={`http://api.whatsapp.com/send?phone=${telephone}`}>
                   <IoLogoWhatsapp size="1.7rem" color="green" />
                 </a>
               )
@@ -60,11 +60,11 @@ ContactCard.propTypes = {
   name: propTypes.string.isRequired,
   email: propTypes.string,
   telephone: propTypes.string,
-  whatsapp: propTypes.oneOfType([propTypes.string, propTypes.number]),
+  whatsapp: propTypes.bool,
 };
 
 ContactCard.defaultProps = {
   email: '',
   telephone: '',
-  whatsapp: '',
+  whatsapp: false,
 };

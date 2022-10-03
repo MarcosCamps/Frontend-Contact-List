@@ -10,6 +10,7 @@ export function Contacts() {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
+    console.log(currentUser);
     getContacts(currentUser.id).then((res) => dispatch(setContactList(res)));
   }, []);
 

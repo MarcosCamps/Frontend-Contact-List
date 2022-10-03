@@ -9,6 +9,7 @@ export const getContacts = async (id: number) => {
 };
 
 export const createContact = async (contact: IAddContacts) => {
+  console.log(contact);
   const { data } = await axios.post(`${API_URL}/contact`, contact);
   return data;
 };
