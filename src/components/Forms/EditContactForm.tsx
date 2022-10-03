@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { updateContact } from 'services';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, Link } from 'react-router-dom';
 import { useAppSelector } from 'hooks';
 import { ErrorHandler } from 'components/Messages';
 import { DeleteContactBtn } from 'components/Buttons';
@@ -21,7 +21,6 @@ export function EditContactForm() {
     const result = await updateContact({
       id: Number(id), name, email, telephone, whatsapp: !!whatsapp,
     });
-    console.log(result);
     if (!result) {
       setError({ status: true, message: 'Error updating contact' });
       return;
@@ -32,7 +31,6 @@ export function EditContactForm() {
     <div className="form-container">
       <section className="section-form">
         <h1>Edit Contact</h1>
-        <h4>Name field is mandatory</h4>
         <ErrorHandler error={error.status} message={error.message} />
         <section className="section-container">
           <form className="form" onSubmit={handleSubmit}>
@@ -59,7 +57,7 @@ export function EditContactForm() {
             <label htmlFor="phone-number">
               Phone Number
               <input
-                type="tel"
+                type="number"
                 name="phone-number"
                 id="phone-number"
                 value={telephone}
@@ -80,6 +78,7 @@ export function EditContactForm() {
             </div>
             <button type="submit">UPDATE CONTACT</button>
             <DeleteContactBtn />
+            <Link to="/contacts" className="cancel-link">Cancel</Link>
           </form>
         </section>
       </section>

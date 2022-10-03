@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { createContact } from 'services';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useAppSelector } from 'hooks';
 import { ErrorHandler } from 'components/Messages';
 
@@ -15,20 +15,21 @@ export function AddContactForm() {
 
   const handleSubmit = async (e: React.SyntheticEvent): Promise<void> => {
     e.preventDefault();
-    const result = await createContact({
-      userId: currentUser.id, name, email, telephone, whatsapp,
-    });
-    if (!result) {
-      setError({ status: true, message: 'Error creating contact' });
-      return;
+    try {
+      if (!name) throw new Error('Name is required');
+      const result = await createContact({
+        userId: currentUser.id, name, email, telephone, whatsapp,
+      });
+      if (!result) throw new Error('Error creating contact');
+      navigate('/contacts');
+    } catch (err: any) {
+      setError({ message: err.message, status: true });
     }
-    navigate('/contacts');
   };
   return (
     <div className="form-container">
       <section className="section-form">
         <h1>Add a new Contact</h1>
-        <h4>Name field is mandatory</h4>
         <ErrorHandler error={error.status} message={error.message} />
         <section className="section-container">
           <form className="form" onSubmit={handleSubmit}>
@@ -55,7 +56,7 @@ export function AddContactForm() {
             <label htmlFor="phone-number">
               Phone Number
               <input
-                type="tel"
+                type="number"
                 name="phone-number"
                 id="phone-number"
                 value={telephone}
@@ -75,6 +76,7 @@ export function AddContactForm() {
               </label>
             </div>
             <button type="submit">ADD CONTACT</button>
+            <Link to="/contacts" className="cancel-link">Cancel</Link>
           </form>
         </section>
       </section>

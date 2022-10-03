@@ -10,7 +10,11 @@ export const currentUserSlice = createSlice({
       state = payload;
       return state;
     },
+    logoutUser: (state) => {
+      state = initialState;
+      return state;
+    },
   },
 });
 
-export const { setCurrentUser } = currentUserSlice.actions;
+export const { setCurrentUser, logoutUser } = currentUserSlice.actions;

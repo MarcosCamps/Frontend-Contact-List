@@ -33,7 +33,6 @@ export function SignUpForm() {
     <div className="form-container">
       <section className="section-form">
         <h1>Welcome To iContacts</h1>
-        <h4>Setup your account now for FREE</h4>
         <ErrorHandler error={error.status} message={error.message} />
         <section className="section-container">
           <form className="form" onSubmit={handleSubmit}>

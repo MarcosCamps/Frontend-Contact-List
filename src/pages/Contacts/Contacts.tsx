@@ -1,22 +1,21 @@
+import { useState, useEffect } from 'react';
 import { Header } from 'components/Header';
+import { Footer } from 'components/Footer';
 import { useAppSelector, useAppDispatch } from 'hooks';
 import { ContactCard } from 'components/Cards';
 import { getContacts } from 'services/contactsApi';
-import { useEffect } from 'react';
 import { setContactList } from 'redux/slicers';
 
 export function Contacts() {
+  const [searchField, setSearchField] = useState('');
   const { currentUser, contactsList } = useAppSelector((state) => state);
   const dispatch = useAppDispatch();
+  const contacts = contactsList.filter((e: any) => e.name?.toLowerCase()
+    .includes(searchField.toLowerCase()));
 
   useEffect(() => {
-    console.log(currentUser);
     getContacts(currentUser.id).then((res) => dispatch(setContactList(res)));
   }, []);
-
-  useEffect(() => {
-    console.log(contactsList);
-  }, [contactsList]);
 
   return (
     <>
@@ -26,7 +25,7 @@ export function Contacts() {
           <p>
             Welcome
             {' '}
-            {currentUser.email}
+            {currentUser.email.split('@')[0]}
             !
           </p>
           <p>
@@ -37,8 +36,16 @@ export function Contacts() {
             contacts.
           </p>
         </div>
+        <div className="search-bar">
+          <input
+            type="text"
+            placeholder="Search contact"
+            value={searchField}
+            onChange={(e) => setSearchField(e.target.value)}
+          />
+        </div>
         <div className="contacts">
-          {contactsList.map(({
+          {contacts.map(({
             id, name, email, telephone, whatsapp,
           }) => (
             <ContactCard
@@ -52,6 +59,7 @@ export function Contacts() {
           ))}
         </div>
       </div>
+      <Footer />
     </>
   );
 }
